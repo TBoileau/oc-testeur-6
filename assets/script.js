@@ -15,4 +15,12 @@ const slides = [
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-]
+];
+
+document.querySelector('.arrow_left').addEventListener('click', () => {
+  console.log('left');
+});
+
+document.querySelector('.arrow_right').addEventListener('click', () => {
+  console.log('right');
+});
