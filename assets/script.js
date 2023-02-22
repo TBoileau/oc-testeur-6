@@ -18,17 +18,29 @@ const slides = [
 ];
 
 document.querySelector('.arrow_left').addEventListener('click', () => {
-  console.log('left');
+  renderSlide(currentSlide.previous);
 });
 
 document.querySelector('.arrow_right').addEventListener('click', () => {
-  console.log('right');
+	renderSlide(currentSlide.next);
 });
 
-slides.forEach(slide => {
+slides.forEach((slide, index) => {
     slide.dot = document.createElement('span');
     slide.dot.classList.add('dot');
     document.querySelector('.dots').appendChild(slide.dot);
+		slide.next = slides[index + 1] || slides[0];
+		slide.previous = slides[index - 1] || slides[slides.length - 1];
 });
 
-slides[0].dot.classList.add('dot_selected');
+let currentSlide = slides[0];
+
+const renderSlide = (slide) => {
+	currentSlide.dot.classList.remove('dot_selected');
+	currentSlide = slide;
+	currentSlide.dot.classList.add('dot_selected');
+	document.querySelector('#banner .banner-img').src = `./assets/images/slideshow/${currentSlide.image}`;
+	document.querySelector('#banner p').innerHTML = currentSlide.tagLine;
+}
+
+renderSlide(currentSlide);
