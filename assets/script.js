@@ -24,3 +24,11 @@ document.querySelector('.arrow_left').addEventListener('click', () => {
 document.querySelector('.arrow_right').addEventListener('click', () => {
   console.log('right');
 });
+
+slides.forEach(slide => {
+    slide.dot = document.createElement('span');
+    slide.dot.classList.add('dot');
+    document.querySelector('.dots').appendChild(slide.dot);
+});
+
+slides[0].dot.classList.add('dot_selected');
